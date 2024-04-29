@@ -3,25 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ROOPジェネレーター</title>
+<title>Roopジェネレーター</title>
 </head>
 <body>
-  <h2>ROOPジェネレーター</h2>
+  <h2>Roopジェネレーター</h2>
 <textarea id="inputText" rows="10" cols="50"></textarea><br>
-<button onclick="generateText()">ループ</button>
-<button onclick="copyText()">コピー</button>
+<button onclick="generateText()">Generate</button>
+<button onclick="copyText()">Copy</button>
+
 <script>
 function generateText() {
     var inputText = document.getElementById("inputText").value;
     while (inputText.length < 10000) {
-        inputText += inputText; 
+        inputText += inputText; // テキストボックスの内容を繰り返し追加して、合計10000文字にする
     }
-
+    // 10000文字までのテキストをテキストボックスに表示
     document.getElementById("inputText").value = inputText.substring(0, 10000);
 }
+
 function copyText() {
     var inputText = document.getElementById("inputText");
     inputText.select();
-    document.execCommand("copy"); 
+    document.execCommand("copy"); // テキストをクリップボードにコピー
     alert("Copied to clipboard!");
 }
