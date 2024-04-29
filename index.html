@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROOPジェネレーター</title>
+</head>
+<body>
+  <h2>ROOPジェネレーター</h2>
+<textarea id="inputText" rows="10" cols="50"></textarea><br>
+<button onclick="generateText()">Generate</button><br>
+<button onclick="copyText()">コピー</button>
+<script>
+function generateText() {
+    var inputText = document.getElementById("inputText").value;
+    while (inputText.length < 10000) {
+        inputText += inputText; 
+    }
+
+    document.getElementById("inputText").value = inputText.substring(0, 10000);
+}
+function copyText() {
+    var inputText = document.getElementById("inputText");
+    inputText.select();
+    document.execCommand("copy"); 
+    alert("Copied to clipboard!");
+}
