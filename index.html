@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>rooper</title>
-</head>
-<body>
-<textarea id="inputText" rows="10" cols="50"></textarea><br>
-<button onclick="generateText()">Generate</button>
-<button onclick="copyText()">Copy</button>
-
-<script>
-function generateText() {
-    var inputText = document.getElementById("inputText").value;
-    while (inputText.length < 10000) {
-        inputText += inputText; // テキストボックスの内容を繰り返し追加、合計10000文字にする
     }
-    // 10000文字までのテキストをテキストボックスに表示
-    document.getElementById("inputText").value = inputText.substring(0, 10000);
+    // targetLengthまでのテキストをテキストボックスに表示
+    document.getElementById("inputText").value = inputText.substring(0, targetLength);
 }
 
 function copyText() {
@@ -27,5 +10,6 @@ function copyText() {
     alert("クリップボードにコピーしたよ〜！");
 }
 </script>
+<div>  <img src="https://www.dropbox.com/scl/fi/c8qa6vhookh1bbkdl3c0z/LINE_capture_737894464.973419.jpeg?rlkey=ippaz97rzfzvr1n5gnwy7kfea&st=al0lu7y0&raw=1" width="40%"><img src="https://www.dropbox.com/scl/fi/537n17am6twmjvtwmebfb/IMG_8407.jpeg?rlkey=sc8tnz244yrekj7ioj9pc1x9p&st=6cotty38&raw=1"width="40%"></div>
 </body>
 </html>
