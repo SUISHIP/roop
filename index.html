@@ -1,3 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rooper</title>
+</head>
+<body>
+<textarea id="inputText" rows="10" cols="50"></textarea><br>
+<label for="toggleLength">オフ=正方形(192) オン=最大(10000)</label>
+<input type="checkbox" id="toggleLength"><br>
+<button onclick="generateText()">Generate</button>
+<button onclick="copyText()">Copy</button>
+
+<script>
+function generateText() {
+    var inputText = document.getElementById("inputText").value;
+    var isTenThousand = document.getElementById("toggleLength").checked;
+    var targetLength = isTenThousand ? 10000 : 192;
+    
+    while (inputText.length < targetLength) {
+        inputText += inputText; // テキストボックスの内容を繰り返し追加
     }
     // targetLengthまでのテキストをテキストボックスに表示
     document.getElementById("inputText").value = inputText.substring(0, targetLength);
