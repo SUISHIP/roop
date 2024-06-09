@@ -24,7 +24,7 @@
 </select><br>
 <button onclick="generateText()">Generate</button>
 <button onclick="copyText()">Copy</button>
-
+<button onclick="clearAll()">Clear</button>
 <script>
 function generateText() {
     var inputText = document.getElementById("inputText").value;
@@ -68,6 +68,12 @@ function copyText() {
     inputText.select();
     document.execCommand("copy");
     alert("クリップボードにコピーしたよ〜！");
+}
+
+function clearAll() {
+    document.getElementById("inputText").value = '';
+    document.getElementById("targetLength").value = '';
+    document.getElementById("loopCount").selectedIndex = 0;
 }
 </script>
 <div>
