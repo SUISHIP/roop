@@ -15,20 +15,19 @@
 <script>
 function generateText() {
     var inputText = document.getElementById("inputText").value;
-    var targetLength = parseInt(document.getElementById("targetLength").value) || 192; // Default to 192 if no value
-    if (targetLength > 10000) targetLength = 10000; // Ensure max length is 10000
+    var targetLength = parseInt(document.getElementById("targetLength").value) || 192;
+    if (targetLength > 10000) targetLength = 10000;
     
     while (inputText.length < targetLength) {
-        inputText += inputText; // テキストボックスの内容を繰り返し追加
+        inputText += inputText;
     }
-    // targetLengthまでのテキストをテキストボックスに表示
     document.getElementById("inputText").value = inputText.substring(0, targetLength);
 }
 
 function copyText() {
     var inputText = document.getElementById("inputText");
     inputText.select();
-    document.execCommand("copy"); // テキストをクリップボードにコピー
+    document.execCommand("copy");
     alert("クリップボードにコピーしたよ〜！");
 }
 </script>
