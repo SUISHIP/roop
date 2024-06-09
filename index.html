@@ -16,8 +16,10 @@
 function generateText() {
     var inputText = document.getElementById("inputText").value;
     var targetLength = parseInt(document.getElementById("targetLength").value) || 192;
-    if (targetLength > 10000) targetLength = 10000;
-    
+    if (targetLength > 10000) {
+        targetLength = 10000;
+        document.getElementById("targetLength").value = 10000;
+    }
     while (inputText.length < targetLength) {
         inputText += inputText;
     }
@@ -33,7 +35,7 @@ function copyText() {
 </script>
 <div>
     <img src="https://www.dropbox.com/scl/fi/c8qa6vhookh1bbkdl3c0z/LINE_capture_737894464.973419.jpeg?rlkey=ippaz97rzfzvr1n5gnwy7kfea&st=al0lu7y0&raw=1" width="40%">
-    <img src="https://www.dropbox.com/scl/fi/537n17am6twmjvtwmebfb/IMG_8407.jpeg?rlkey=sc8tnz244yrekj7ioj9pc1x9p&st=6cotty38&raw=1"width="40%">
+    <img src="https://www.dropbox.com/scl/fi/537n17am6twmjvtwmebfb/IMG_8407.jpeg?rlkey=sc8tnz244yrekj7ioj9pc1x9p&st=6cotty38&raw=1" width="40%">
 </div>
 </body>
 </html>
