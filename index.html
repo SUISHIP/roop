@@ -7,29 +7,29 @@
 </head>
 <body>
 <textarea id="inputText" rows="10" cols="50"></textarea><br>
-<label for="toggleLength">オフ=正方形(192) オン=最大(10000)</label>
-<input type="checkbox" id="toggleLength"><br>
+<label for="targetLength">最大文字数を入力（最大 10000）:</label>
+<input type="number" id="targetLength" min="1" max="10000"><br>
 <button onclick="generateText()">Generate</button>
 <button onclick="copyText()">Copy</button>
 
 <script>
 function generateText() {
-    var inputText = document.getElementById("inputText").value;
-    var isTenThousand = document.getElementById("toggleLength").checked;
-    var targetLength = isTenThousand ? 10000 : 192;
-    
-    while (inputText.length < targetLength) {
-        inputText += inputText; // テキストボックスの内容を繰り返し追加
-    }
-    // targetLengthまでのテキストをテキストボックスに表示
-    document.getElementById("inputText").value = inputText.substring(0, targetLength);
+    var inputText = document.getElementById("inputText").value;
+    var targetLength = parseInt(document.getElementById("targetLength").value) || 192; // Default to 192 if no value
+    if (targetLength > 10000) targetLength = 10000; // Ensure max length is 10000
+    
+    while (inputText.length < targetLength) {
+        inputText += inputText; // テキストボックスの内容を繰り返し追加
+    }
+    // targetLengthまでのテキストをテキストボックスに表示
+    document.getElementById("inputText").value = inputText.substring(0, targetLength);
 }
 
 function copyText() {
-    var inputText = document.getElementById("inputText");
-    inputText.select();
-    document.execCommand("copy"); // テキストをクリップボードにコピー
-    alert("クリップボードにコピーしたよ〜！");
+    var inputText = document.getElementById("inputText");
+    inputText.select();
+    document.execCommand("copy"); // テキストをクリップボードにコピー
+    alert("クリップボードにコピーしたよ〜！");
 }
 </script>
 <div>
