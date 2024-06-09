@@ -9,21 +9,56 @@
 <textarea id="inputText" rows="10" cols="50"></textarea><br>
 <label for="targetLength">最大文字数を入力（最大 10000）:</label>
 <input type="number" id="targetLength" min="1" max="10000"><br>
+<label for="loopCount">ループ回数を選択:</label>
+<select id="loopCount">
+    <option value="">選択してください</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+</select><br>
 <button onclick="generateText()">Generate</button>
 <button onclick="copyText()">Copy</button>
 
 <script>
 function generateText() {
     var inputText = document.getElementById("inputText").value;
-    var targetLength = parseInt(document.getElementById("targetLength").value) || 192;
-    if (targetLength > 10000) {
+    var targetLength = parseInt(document.getElementById("targetLength").value);
+    var loopCount = parseInt(document.getElementById("loopCount").value);
+    var resultText = inputText;
+
+    if (!isNaN(targetLength) && targetLength > 10000) {
         targetLength = 10000;
         document.getElementById("targetLength").value = 10000;
+        alert("文字数は最大10000文字に制限されます。");
     }
-    while (inputText.length < targetLength) {
-        inputText += inputText;
+
+    if (loopCount && loopCount > 0) {
+        var tempText = inputText;
+        for (var i = 1; i < loopCount; i++) {
+            tempText += inputText;
+        }
+        if (tempText.length > 10000) {
+            var maxLoops = Math.floor(10000 / inputText.length);
+            tempText = inputText.repeat(maxLoops);
+            alert("ループ回数による文字数が10000文字を超えています。最大" + maxLoops + "回に制限されます。");
+        }
+        if (!isNaN(targetLength)) {
+            resultText = tempText.substring(0, Math.max(targetLength, tempText.length));
+        } else {
+            resultText = tempText;
+        }
+    } else if (!isNaN(targetLength)) {
+        while (resultText.length < targetLength) {
+            resultText += inputText;
+        }
+        resultText = resultText.substring(0, targetLength);
     }
-    document.getElementById("inputText").value = inputText.substring(0, targetLength);
+
+    document.getElementById("inputText").value = resultText;
 }
 
 function copyText() {
